@@ -1,0 +1,10 @@
+#canv {
+    border: 1px solid red;
+    cursor: crosshair;
+    display: block;
+}
+
+body {
+    margin: 0px;
+    background: black;
+}
