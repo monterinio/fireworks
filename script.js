@@ -22,15 +22,12 @@ window.onload = function () {
                 context.fillRect(0, 0, canvas.width, canvas.height);
 
                 context.globalCompositeOperation = 'lighter';
-                //context.clearRect(0, 0, canvas.width, canvas.height);
 
                 for (let i = 0; i < FIREWORKS_MODULE.getFireworkLength(); i++) {
-                    // fireworkArray[i].update();
                     FIREWORKS_MODULE.getFireworks()[i].update(i);
                 }
 
                 for (let i = 0; i < FIREWORKS_MODULE.getParticleLength(); i++) {
-                    // fireworkArray[i].update();
                     FIREWORKS_MODULE.getParticles()[i].update(i);
                 }
 
@@ -44,14 +41,9 @@ window.onload = function () {
                 ROSETTA_MODULE.updateRosetta(100, 100);
             },
             initializeCanvas: function () {
-                // fireworkArray = [];
                 // create fireworks only once.
                 FIREWORKS_MODULE.resetFireworks();
                 FIREWORKS_MODULE.addFireworks();
-
-                // fireworkArray.push(new Firework(canvas, window));
-
-
             }
         }
     })();

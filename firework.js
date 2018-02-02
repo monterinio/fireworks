@@ -13,11 +13,6 @@ function Firework(canvas, x0, y0, xn, yn) {
     this.distanceTraveled = 0;
 
     this.previousCoordinate = new Coordinate(this.x, this.y);
-    // this.coordinateCount = 3;
-
-    // for(let i = 0; i < this.coordinateCount; i++) {
-    //     this.coordinates.push([this.x, this.y]);
-    // }
 
     this.alfa = Math.atan2(yn - y0, xn - x0);
     this.speed = 2;
@@ -42,9 +37,7 @@ function Firework(canvas, x0, y0, xn, yn) {
     }
 
     this.update = function(index) {
-        
-        // this.coordinates.pop();
-        // this.coordinates.unshift([this.x, this.y]);
+
         this.previousCoordinate.updateCoordinate(this.x, this.y);
 
         if(this.targetRadius < 8) {
@@ -62,7 +55,7 @@ function Firework(canvas, x0, y0, xn, yn) {
         this.distanceTraveled = UTILS_MODULE.calculateDistance(this.x0, this.y0, this.x + vx, this.y + vy);
 
         if(this.distanceTraveled >= this.distanceToTarget) {
-            UTILS_MODULE.createParticles(this.xn, this.yn, canvas);
+            UTILS_MODULE.createParticles(this.xn, this.yn, this.context);
             FIREWORKS_MODULE.deleteFirework(index);
         } else {
             this.x += vx;

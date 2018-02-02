@@ -1,9 +1,9 @@
-function Particle(x, y, canvas) {
+function Particle(x, y, context) {
     this.x = x;
     this.y = y;
     this.coordinates = [];
     this.coordinateCount = 10;
-    this.context = canvas.getContext('2d');
+    this.context = context;
     
     
     for(let i = 0; i < this.coordinateCount; i++) {
@@ -29,8 +29,9 @@ function Particle(x, y, canvas) {
         this.y += Math.sin(this.angle) * this.speed + this.gravity;
 
         this.alpha -= this.decay;
-
-        if(this.aplha <= this.decay) {
+        // console.log('alpha: ' + this.alpha + ', decay: ' + this.decay);
+        if(this.alpha <= this.decay) {
+            // console.log('huj');
             FIREWORKS_MODULE.deleteParticle(index);
         }
 
