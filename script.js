@@ -8,11 +8,6 @@ window.onload = function() {
     canvas.height = 0.994 * Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
     var CANVAS_MODULE = (function () {
-        
-        var
-            fireworkArray = [],
-            particles = [],
-            hue = 120
 
         return {
             animate: function() {
@@ -22,8 +17,13 @@ window.onload = function() {
                 for(let i = 0; i < fireworkArray.length; i++) {
                     fireworkArray[i].update();
                 }
+
+                ROSETTA_MODULE.updateRosetta(100, 100);
         },
             initializeCanvas: function() {
+                
+                ROSETTA_MODULE.initializeModule();
+
                 fireworkArray = [];
 
                 setTimeout(function() {
