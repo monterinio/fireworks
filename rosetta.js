@@ -10,25 +10,33 @@ var ROSETTA_MODULE = (function() {
         initializeModule : function() {
             canvas = document.getElementById('canv');
             context = canvas.getContext('2d');
-            rotation = 0;
+            initialRotation = 0;
             step = 36;
         },
         drawRosetta : function(xTranslation, yTranslation) {
             context.save();
             context.translate(xTranslation, yTranslation);
 
-            context.rotate(degreesToRadians(initialRotation));
-            context.fillRect(0, 0, 100, 100);
+            context.rotate(UTILS_MODULE.degreesToRadians(initialRotation));
+            context.fillStyle = 'white';
+            context.fillRect(0, 0, 5, 35);
 
 
             for(let i = 0; i < 9; i++) {
-                context.rotate(degreesToRadians(step));
-                context.fillRect(0, 0, 100, 100);
+                context.rotate(UTILS_MODULE.degreesToRadians(step));
+                if(i % 2 == 0) {
+                    context.fillStyle = 'red';
+                } else {
+                    context.fillStyle = 'white';
+                }
+                context.fillRect(0, 0, 5, 35);
             }
+
+            context.restore();
         },
         updateRosetta : function(xTranslation, yTranslation) {
-            drawRosetta(xTranslation, yTranslation);
-            rotation += 1;
+            ROSETTA_MODULE.drawRosetta(xTranslation, yTranslation);
+            initialRotation += 1;
         }
     }
 
